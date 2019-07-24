@@ -8,6 +8,7 @@ import { EmployeeComponent } from './employees/employee/employee.component';
 import { EmployeeService } from './shared/employee.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { DepartmentService } from './shared/department.service';
 
 //FÜR DEN FIREBASE IMPORT!!!
 import { AngularFireModule } from 'angularfire2';
@@ -29,7 +30,7 @@ import { environment } from '../environments/environment';
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [EmployeeService],
+  providers: [EmployeeService, DepartmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

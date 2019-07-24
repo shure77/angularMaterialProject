@@ -1,4 +1,4 @@
-<form [formGroup]="service.form" class="normal-form">
+<form [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
     <mat-grid-list cols="2" rowHeight="300px">
         <mat-grid-tile>
             <div class="controles-container">
@@ -33,8 +33,8 @@
                 <mat-form-field>
                     <mat-select formControlName="department" placeholder="Department">
                         <mat-option>None</mat-option>
-                        <ng-container *ngFor="let department of departments">
-                            <mat-option value="{{department.id}}">{{department.value}}</mat-option>
+                        <ng-container *ngFor="let department of departmentService.array">
+                            <mat-option value="{{department.$key}}">{{department.code}}-{{department.name}}</mat-option>
                         </ng-container>
                     </mat-select>
                 </mat-form-field>

@@ -18,7 +18,8 @@ import { MatGridListModule, MatFormFieldModule, MatInputModule, MatRadioModule, 
     Material.MatDatepickerModule,
     Material.MatCheckboxModule,
     Material.MatNativeDateModule,
-    Material.MatButtonModule
+    Material.MatButtonModule,
+    Material.MatSnackBarModule
   ],
   exports: [
     Material.MatToolbarModule,
@@ -30,7 +31,8 @@ import { MatGridListModule, MatFormFieldModule, MatInputModule, MatRadioModule, 
     Material.MatDatepickerModule,
     Material.MatCheckboxModule,
     Material.MatNativeDateModule,
-    Material.MatButtonModule
+    Material.MatButtonModule,
+    Material.MatSnackBarModule
   ]
 })
 export class MaterialModule { }
