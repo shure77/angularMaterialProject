@@ -47,6 +47,12 @@ export class EmployeeListComponent implements OnInit {
         this.employeesListData = new MatTableDataSource(this.employeesArray);
         this.employeesListData.sort = this.sort;
         this.employeesListData.paginator = this.paginator;
+        //this is to limit the filter function to the shown colums only. Means I do not get any response if I search for the hire date as hire date is not part of the table
+        this.employeesListData.filterPredicate = (data, filter) => {
+          return this.displayedColumns.some( element => {
+            return element != 'actions' && data[element].toLowerCase().indexOf(filter) != -1;
+          });
+        }
       }
     );
   }
