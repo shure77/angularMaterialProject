@@ -78,3 +78,11 @@ mat-footer-row mat-footer-cell {
 .search-form-field div.mat-form-field-wrapper {
     padding-bottom: 5px;
 }
+
+/*dialog pop-up*/
+.btn-dialog-close {
+    width: 45px;
+    min-width: 0px !important;
+    height: 40px;
+    padding: 0px !important;
+}
