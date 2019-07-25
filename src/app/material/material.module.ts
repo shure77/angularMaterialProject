@@ -19,7 +19,9 @@ import { MatGridListModule, MatFormFieldModule, MatInputModule, MatRadioModule, 
     Material.MatCheckboxModule,
     Material.MatNativeDateModule,
     Material.MatButtonModule,
-    Material.MatSnackBarModule
+    Material.MatSnackBarModule,
+    Material.MatTableModule,
+    Material.MatIconModule
   ],
   exports: [
     Material.MatToolbarModule,
@@ -32,7 +34,9 @@ import { MatGridListModule, MatFormFieldModule, MatInputModule, MatRadioModule, 
     Material.MatCheckboxModule,
     Material.MatNativeDateModule,
     Material.MatButtonModule,
-    Material.MatSnackBarModule
+    Material.MatSnackBarModule,
+    Material.MatTableModule,
+    Material.MatIconModule
   ]
 })
 export class MaterialModule { }
