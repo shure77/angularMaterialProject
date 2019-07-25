@@ -9,6 +9,8 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 })
 export class EmployeeListComponent implements OnInit {
 
+  searchKey: string;
+
   employeesArray = [];
   //employeesArray holds the converted values we got back from the firebase database. For Angular Marterial DataTable, we have
   //to convert the data once again! Therefore MatTableDataSource. employeesListData is hooked in the template!
@@ -43,5 +45,15 @@ export class EmployeeListComponent implements OnInit {
         this.employeesListData.paginator = this.paginator;
       }
     );
+  }
+
+  onSearchClear() {
+    this.searchKey = '';
+    this.employeesListData.filter = this.searchKey.trim().toLowerCase();
+  }
+
+  //keyup-Event to filter employeesList on every keystroke
+  applyFilter() {
+    this.employeesListData.filter = this.searchKey.trim().toLowerCase();
   }
 }
