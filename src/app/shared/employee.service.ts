@@ -57,7 +57,7 @@ export class EmployeeService {
   }
 
   updateEmployee(employee) {
-    this.employeeList.update(employee.$key, 
+    this.employeeList.update(employee.$key,
       {
         fullName: employee.fullName,
         email: employee.email,

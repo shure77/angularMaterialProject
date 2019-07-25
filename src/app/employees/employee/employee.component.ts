@@ -29,7 +29,13 @@ export class EmployeeComponent implements OnInit {
   onSubmit() {
     //check if the form is valid first
     if (this.service.form.valid) {
-      this.service.insertEmployee(this.service.form.value);
+      //if the value inside the key property is null, a new employee is created
+      //otherwise a given entry is updated
+      if(!this.service.form.get('$key').value) {
+        this.service.insertEmployee(this.service.form.value);
+      } else {
+        this.service.updateEmployee(this.service.form.value);
+      }
       this.service.form.reset();
       this.service.initializeFormGroup();
       this.notificationService.success(':: Submitted successfully');
