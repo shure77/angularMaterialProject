@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { EmployeeService } from 'src/app/shared/employee.service';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { DepartmentService } from 'src/app/shared/department.service';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+import { EmployeeComponent } from '../employee/employee.component';
 
 @Component({
   selector: 'app-employee-list',
@@ -24,7 +26,9 @@ export class EmployeeListComponent implements OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  constructor(private service: EmployeeService, private departmentService: DepartmentService) { }
+  constructor(private service: EmployeeService,
+    private departmentService: DepartmentService,
+    private dialog: MatDialog) { }
 
   //in ngOnInit I get the employee entries from firebase. getEmployees returns an observable, i have to subscribe to! 
   //inside the subscribe function I have to convert the data into an array
@@ -65,5 +69,15 @@ export class EmployeeListComponent implements OnInit {
   //keyup-Event to filter employeesList on every keystroke
   applyFilter() {
     this.employeesListData.filter = this.searchKey.trim().toLowerCase();
+  }
+
+  onCreate() {
+    this.service.initializeFormGroup(); // set the default values
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true; //will disable the feature to close the window by clicking outside the popup window
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%"; //will set the width to 60% of the whole window 
+    //we open the EmployeeListComponent in the dialog window
+    this.dialog.open(EmployeeComponent, dialogConfig);
   }
 }

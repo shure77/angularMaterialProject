@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from 'src/app/shared/employee.service';
 import { DepartmentService } from 'src/app/shared/department.service';
 import { NotificationService } from 'src/app/shared/notification.service';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-employee',
@@ -10,7 +11,10 @@ import { NotificationService } from 'src/app/shared/notification.service';
 })
 export class EmployeeComponent implements OnInit {
 
-  constructor(private service: EmployeeService, private departmentService: DepartmentService, private notificationService: NotificationService) { }
+  constructor(private service: EmployeeService,
+    private departmentService: DepartmentService,
+    private notificationService: NotificationService,
+    public dialogRef: MatDialogRef<EmployeeComponent>) { }
 
   ngOnInit() {
     //bevor onSubmit etwas an Firebase senden kann, muss getEmployees gecalled werden
@@ -29,6 +33,13 @@ export class EmployeeComponent implements OnInit {
       this.service.form.reset();
       this.service.initializeFormGroup();
       this.notificationService.success(':: Submitted successfully');
+      this.onClose();
     }
+  }
+
+  onClose() {
+    this.service.form.reset();
+    this.service.initializeFormGroup();
+    this.dialogRef.close();
   }
 }

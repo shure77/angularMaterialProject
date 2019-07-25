@@ -23,7 +23,8 @@ import { MatGridListModule, MatFormFieldModule, MatInputModule, MatRadioModule, 
     Material.MatTableModule,
     Material.MatIconModule,
     Material.MatPaginatorModule,
-    Material.MatSortModule
+    Material.MatSortModule,
+    Material.MatDialogModule
   ],
   exports: [
     Material.MatToolbarModule,
@@ -40,7 +41,8 @@ import { MatGridListModule, MatFormFieldModule, MatInputModule, MatRadioModule, 
     Material.MatTableModule,
     Material.MatIconModule,
     Material.MatPaginatorModule,
-    Material.MatSortModule
+    Material.MatSortModule,
+    Material.MatDialogModule
   ]
 })
 export class MaterialModule { }

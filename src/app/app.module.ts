@@ -34,6 +34,7 @@ import { EmployeeListComponent } from './employees/employee-list/employee-list.c
     FormsModule
   ],
   providers: [EmployeeService, DepartmentService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [EmployeeComponent]
 })
 export class AppModule { }
