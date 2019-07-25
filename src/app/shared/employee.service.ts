@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: "root"
@@ -19,7 +20,7 @@ export class EmployeeService {
     city: new FormControl(""),
     gender: new FormControl("1"), //will be a radio Button
     department: new FormControl(0), //select dropdown
-    hireDate: new FormControl(""), //date picker
+    hireDate: new FormControl(''), //date picker
     isPermanent: new FormControl(false)
   });
 
@@ -32,7 +33,7 @@ export class EmployeeService {
       city: "",
       gender: "1",
       department: "0",
-      hireDate: "",
+      hireDate: '',
       isPermanent: false
     });
   }
@@ -71,5 +72,11 @@ export class EmployeeService {
 
   deleteEmployee($key: string) {
     this.employeeList.remove($key);
+  }
+
+  populateForm(employee) {
+    this.form.patchValue(_.omit(employee, ['departmentName']));
+    //this.form.setValue(employee);
+
   }
 }

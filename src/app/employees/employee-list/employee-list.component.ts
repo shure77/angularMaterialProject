@@ -80,4 +80,14 @@ export class EmployeeListComponent implements OnInit {
     //we open the EmployeeListComponent in the dialog window
     this.dialog.open(EmployeeComponent, dialogConfig);
   }
+
+  onEdit(row) {
+    this.service.populateForm(row);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true; //will disable the feature to close the window by clicking outside the popup window
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%"; //will set the width to 60% of the whole window 
+    //we open the EmployeeListComponent in the dialog window
+    this.dialog.open(EmployeeComponent, dialogConfig);
+  }
 }
