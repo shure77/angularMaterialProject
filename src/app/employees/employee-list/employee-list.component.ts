@@ -4,6 +4,7 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { DepartmentService } from 'src/app/shared/department.service';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { EmployeeComponent } from '../employee/employee.component';
+import { NotificationService } from 'src/app/shared/notification.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -28,7 +29,8 @@ export class EmployeeListComponent implements OnInit {
 
   constructor(private service: EmployeeService,
     private departmentService: DepartmentService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog, 
+    private notificationService: NotificationService) { }
 
   //in ngOnInit I get the employee entries from firebase. getEmployees returns an observable, i have to subscribe to! 
   //inside the subscribe function I have to convert the data into an array
@@ -90,4 +92,11 @@ export class EmployeeListComponent implements OnInit {
     //we open the EmployeeListComponent in the dialog window
     this.dialog.open(EmployeeComponent, dialogConfig);
   }
+
+  onDelete($key) {
+    if(confirm('Are you sure to delete this record ?')){
+    this.service.deleteEmployee($key);
+    this.notificationService.warn('! Deleted sucessfully');
+  }
+}
 }
