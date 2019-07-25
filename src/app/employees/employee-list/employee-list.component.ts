@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { EmployeeService } from 'src/app/shared/employee.service';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatSort } from '@angular/material';
 
 @Component({
   selector: 'app-employee-list',
@@ -17,6 +17,8 @@ export class EmployeeListComponent implements OnInit {
   //displayedColumns is hooked to the templates mat-header-row tag (there to the *matHeaderRowDef directive)and defines the header column names
   //wenn die strings im array entfernt werden oder anders sortiert werden, dann kann die Spalte entfernt oder anders angeordnet werden
   displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'actions'];
+
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor(private service: EmployeeService) { }
 
@@ -36,6 +38,7 @@ export class EmployeeListComponent implements OnInit {
           };
         });
         this.employeesListData = new MatTableDataSource(this.employeesArray);
+        this.employeesListData.sort = this.sort;
       }
     );
   }
